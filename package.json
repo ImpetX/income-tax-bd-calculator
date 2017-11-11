@@ -4,7 +4,10 @@
   "description": "An income tax calculator in accordance with Bangladesh Income Tax Ordinance",
   "main": "src/index.jsx",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "test:coverage": "jest --coverage && lite-server",
+    "start": "webpack-dev-server",
+    "dev": "webpack -w"
   },
   "repository": {
     "type": "git",
