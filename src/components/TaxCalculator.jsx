@@ -63,13 +63,13 @@ class TaxCalculator extends Component {
             conveyanceAllowance: Number(this.ConveyanceAllowance.value)
         };
 
-        let taxOnBasicSalary = this.getYearlyGross(inputValues.basicSalary);
-        let taxOnTotalBonus = inputValues.totalBonus;
-        let taxOnHouseRent = this.getYearlyGross(this.getTaxableHouseRent(inputValues.houseRent, inputValues.basicSalary));
+        let taxableBasicSalary = this.getYearlyGross(inputValues.basicSalary);
+        let taxableTotalBonus = inputValues.totalBonus;
+        let taxableHouseRent = this.getYearlyGross(this.getTaxableHouseRent(inputValues.houseRent, inputValues.basicSalary));
         let taxableMedicalAllowance = this.getTaxableMedicalAllowance(inputValues.medicalAllowance, inputValues.basicSalary);
         let taxableConveyanceAllowance = this.getTaxableConveyanceAllowance(inputValues.conveyanceAllowance);
 
-        let totalTax = taxOnBasicSalary + taxOnTotalBonus + taxOnHouseRent + taxableMedicalAllowance + taxableConveyanceAllowance;
+        let totalTax = taxableBasicSalary + taxableTotalBonus + taxableHouseRent + taxableMedicalAllowance + taxableConveyanceAllowance;
 
         this.setState({
             totalTax,
@@ -82,7 +82,7 @@ class TaxCalculator extends Component {
             <div className='wrapper'>
                 <form onSubmit={this.handleSubmit}>
                     <div className='mb--15'>
-                        <label>মূল বেতন (মাসিক) / Basic Salary</label>
+                        <label>মূল বেতন (মাসিক) / Basic Salary (Monthly)</label>
                         <input
                             type="text"
                             ref={input => this.BasicSalary = input}
@@ -90,7 +90,7 @@ class TaxCalculator extends Component {
                     </div>
 
                     <div className='mb--15'>
-                        <label>বাড়ি ভাড়া (মাসিক) / House Rent</label>
+                        <label>বাড়ি ভাড়া (মাসিক) / House Rent (Monthly)</label>
                         <input
                             type="text"
                             ref={input => this.HouseRent = input}
@@ -98,7 +98,7 @@ class TaxCalculator extends Component {
                     </div>
 
                     <div className='mb--15'>
-                        <label>চিকিৎসা ভাতা (মাসিক) / Medical Allowance</label>
+                        <label>চিকিৎসা ভাতা (মাসিক) / Medical Allowance (Monthly)</label>
                         <input
                             type="text"
                             ref={input => this.MedicalAllowance = input}
@@ -106,7 +106,7 @@ class TaxCalculator extends Component {
                     </div>
 
                     <div className='mb--15'>
-                        <label>পরিবহন ভাতা (মাসিক) / Medical Allowance</label>
+                        <label>পরিবহন ভাতা (মাসিক) / Medical Allowance (Monthly)</label>
                         <input
                             type="text"
                             ref={input => this.ConveyanceAllowance = input}
@@ -114,18 +114,18 @@ class TaxCalculator extends Component {
                     </div>
 
                     <div className='mb--15'>
-                        <label>মোট বোনাস (বাৎসরিক) / Total Yearly Bonus</label>
+                        <label>মোট বোনাস (বাৎসরিক) / Total Yearly Bonus (Yearly)</label>
                         <input
                             type="text"
                             ref={input => this.TotalBonus = input}
                             onChange={this.handleChange}/>
                     </div>
 
-                    <button type='submit'>আয়কর গণণা</button>
+                    <button type='submit'>করযোগ্য আয় দেখুন</button>
                 </form>
 
                 {this.state.showTotalTax &&
-                <p>মোট আয়কর: {this.state.totalTax}</p>
+                <p>মোট করযোগ্য আয়: {this.state.totalTax}</p>
                 }
             </div>
         );
