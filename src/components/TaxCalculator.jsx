@@ -2,7 +2,11 @@ import React, {Component} from 'react';
 
 class TaxCalculator extends Component {
     render() {
-        return <h2>Tax Calculator</h2>;
+        return (
+            <div className='wrapper'>
+                <h2>Lorem ipsum dolor sit amet.</h2>
+            </div>
+        );
     }
 }
 
