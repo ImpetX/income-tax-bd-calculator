@@ -73,7 +73,7 @@ var config = {
 
             {
                 test: /\.(css|scss)?$/,
-                use: ExtractTextPlugin.extract(
+                use: ['css-hot-loader'].concat(ExtractTextPlugin.extract(
                     {
                         fallback: "style-loader",
                         use: [
@@ -99,7 +99,7 @@ var config = {
                             }
                         ]
                     }
-                )
+                ))
             },
 
             {
