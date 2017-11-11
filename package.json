@@ -23,5 +23,9 @@
   "bugs": {
     "url": "https://github.com/ImpetX/income-tax-bd-calculator/issues"
   },
-  "homepage": "https://github.com/ImpetX/income-tax-bd-calculator#readme"
+  "homepage": "https://github.com/ImpetX/income-tax-bd-calculator#readme",
+  "dependencies": {
+    "react": "^16.1.0",
+    "react-dom": "^16.1.0"
+  }
 }
