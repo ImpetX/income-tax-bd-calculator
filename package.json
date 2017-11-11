@@ -1,0 +1,27 @@
+{
+  "name": "income-tax-bd-calculator",
+  "version": "0.1.0",
+  "description": "An income tax calculator in accordance with Bangladesh Income Tax Ordinance",
+  "main": "src/index.jsx",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ImpetX/income-tax-bd-calculator.git"
+  },
+  "keywords": [
+    "income",
+    "tax",
+    "bangladesh",
+    "react",
+    "webpack",
+    "javascript"
+  ],
+  "author": "Kamal Sharif",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ImpetX/income-tax-bd-calculator/issues"
+  },
+  "homepage": "https://github.com/ImpetX/income-tax-bd-calculator#readme"
+}
