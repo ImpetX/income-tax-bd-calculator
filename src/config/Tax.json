@@ -1,0 +1,31 @@
+{
+    "HouseRent": {
+        "Threshold": 300000,
+        "Percentage": 0.5
+    },
+
+    "MedicalAllowance": {
+        "Threshold": 120000,
+        "Percentage": 0.1
+    },
+
+    "ConveyanceAllowance": {
+        "Threshold": 30000
+    },
+
+    "TaxFeeThreshold": {
+        "Group_1": {
+            "Income": 250000,
+            "Tax": 0
+        },
+
+        "Group_2": {
+            "Income": 400000,
+            "Tax": 0.1
+        },
+
+        "Rest": {
+            "Tax": 0.15
+        }
+    }
+}
