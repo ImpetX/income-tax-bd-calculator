@@ -134,7 +134,7 @@ class TaxCalculator extends Component {
                             onChange={this.handleChange}/>
                     </div>
 
-                    <button type='submit'>করযোগ্য আয় দেখুন</button>
+                    <button type='submit'>মোট কর দেখুন / View Total Tax</button>
                 </form>
 
                 {this.state.showTotalTax &&
