@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import {getYearlyGross, getLowerValue} from '../utils/utils';
+import {getYearlyGross, getLowerValue, getInvestmentAllowance, getTaxRebate, getTaxLiability} from '../utils/utils';
 
 class TaxCalculator extends Component {
     constructor(props) {
@@ -54,7 +54,8 @@ class TaxCalculator extends Component {
             totalBonus: Number(this.TotalBonus.value),
             houseRent: Number(this.HouseRent.value),
             medicalAllowance: Number(this.MedicalAllowance.value),
-            conveyanceAllowance: Number(this.ConveyanceAllowance.value)
+            conveyanceAllowance: Number(this.ConveyanceAllowance.value),
+            totalInvestment: Number(this.TotalInvestment.value)
         };
 
         let taxableBasicSalary = getYearlyGross(inputValues.basicSalary);
@@ -63,7 +64,12 @@ class TaxCalculator extends Component {
         let taxableMedicalAllowance = this.getTaxableMedicalAllowance(inputValues.medicalAllowance, inputValues.basicSalary);
         let taxableConveyanceAllowance = this.getTaxableConveyanceAllowance(inputValues.conveyanceAllowance);
 
-        let totalTax = taxableBasicSalary + taxableTotalBonus + taxableHouseRent + taxableMedicalAllowance + taxableConveyanceAllowance;
+        let totalTaxableIncome = taxableBasicSalary + taxableTotalBonus + taxableHouseRent + taxableMedicalAllowance + taxableConveyanceAllowance;
+
+        let taxLiability  = getTaxLiability(totalTaxableIncome);
+        let maxInvestmentAllowance = getInvestmentAllowance(totalTaxableIncome);
+        let taxRebate = getTaxRebate(maxInvestmentAllowance, inputValues.totalInvestment);
+        let totalTax = taxLiability - taxRebate;
 
         this.setState({
             totalTax,
@@ -115,11 +121,21 @@ class TaxCalculator extends Component {
                             onChange={this.handleChange}/>
                     </div>
 
+                    <div className='mb--15'>
+                        <label>মোট বিনিয়োগ (বাৎসরিক) / Total Investement (Yearly)</label>
+                        <input
+                            type="text"
+                            ref={input => this.TotalInvestment = input}
+                            onChange={this.handleChange}/>
+                    </div>
+
                     <button type='submit'>করযোগ্য আয় দেখুন</button>
                 </form>
 
                 {this.state.showTotalTax &&
-                    <p>মোট করযোগ্য আয়: {this.state.totalTax}</p>
+                    <div>
+                        <p>মোট কর: {this.state.totalTax}</p>
+                    </div>
                 }
             </div>
         );
