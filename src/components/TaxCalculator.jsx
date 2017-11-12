@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 
+import getYearlyGross from '../utils/getYearlyGross';
+import getLowerValue from '../utils/getLowerValue';
+
 class TaxCalculator extends Component {
     constructor(props) {
         super(props);
@@ -13,35 +16,27 @@ class TaxCalculator extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    getLowerValue(value1, value2) {
-        return value1 < value2 ? value1 : value2;
-    }
-
-    getYearlyGross(value) {
-        return value * 12;
-    }
-
     getTaxableHouseRent(houseRent, basicSalary) {
         const THRESHOLD_HOUSE_RENT = 25000;
         let halfOfBasicSalary = basicSalary/2;
-        let deductibleAmount = this.getLowerValue(THRESHOLD_HOUSE_RENT, halfOfBasicSalary);
+        let deductibleAmount = getLowerValue(THRESHOLD_HOUSE_RENT, halfOfBasicSalary);
 
         return houseRent > deductibleAmount ? houseRent - deductibleAmount : 0;
     }
 
     getTaxableMedicalAllowance(medicalAllowance, basicSalary) {
         const THRESHOLD_MEDICAL_ALLOWANCE = 120000;
-        let tenthOfBasicSalary = this.getYearlyGross(basicSalary * 0.1);
+        let tenthOfBasicSalary = getYearlyGross(basicSalary * 0.1);
 
-        let deductibleAmount = this.getLowerValue(THRESHOLD_MEDICAL_ALLOWANCE, tenthOfBasicSalary);
+        let deductibleAmount = getLowerValue(THRESHOLD_MEDICAL_ALLOWANCE, tenthOfBasicSalary);
 
-        return this.getYearlyGross(medicalAllowance) > deductibleAmount ? this.getYearlyGross(medicalAllowance) - deductibleAmount : 0;
+        return getYearlyGross(medicalAllowance) > deductibleAmount ? getYearlyGross(medicalAllowance) - deductibleAmount : 0;
     }
 
     getTaxableConveyanceAllowance(conveyanceAllowance) {
         const THRESHOLD_CONVEYANCE_ALLOWANCE = 30000;
 
-        return this.getYearlyGross(conveyanceAllowance) > THRESHOLD_CONVEYANCE_ALLOWANCE ? this.getYearlyGross(conveyanceAllowance) - THRESHOLD_CONVEYANCE_ALLOWANCE : 0;
+        return getYearlyGross(conveyanceAllowance) > THRESHOLD_CONVEYANCE_ALLOWANCE ? getYearlyGross(conveyanceAllowance) - THRESHOLD_CONVEYANCE_ALLOWANCE : 0;
     }
 
     handleChange(e) {
@@ -63,9 +58,9 @@ class TaxCalculator extends Component {
             conveyanceAllowance: Number(this.ConveyanceAllowance.value)
         };
 
-        let taxableBasicSalary = this.getYearlyGross(inputValues.basicSalary);
+        let taxableBasicSalary = getYearlyGross(inputValues.basicSalary);
         let taxableTotalBonus = inputValues.totalBonus;
-        let taxableHouseRent = this.getYearlyGross(this.getTaxableHouseRent(inputValues.houseRent, inputValues.basicSalary));
+        let taxableHouseRent = getYearlyGross(this.getTaxableHouseRent(inputValues.houseRent, inputValues.basicSalary));
         let taxableMedicalAllowance = this.getTaxableMedicalAllowance(inputValues.medicalAllowance, inputValues.basicSalary);
         let taxableConveyanceAllowance = this.getTaxableConveyanceAllowance(inputValues.conveyanceAllowance);
 
