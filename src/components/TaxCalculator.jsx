@@ -1,6 +1,11 @@
 import React, {Component} from 'react';
 
-import {getYearlyGross, getLowerValue, getInvestmentAllowance, getTaxRebate, getTaxLiability} from '../utils/utils';
+import {
+    getYearlyGross,
+    getLowerValue,
+    getInvestmentAllowance,
+    getTaxRebate,
+    getTaxLiability} from '../utils/utils';
 
 class TaxCalculator extends Component {
     constructor(props) {
