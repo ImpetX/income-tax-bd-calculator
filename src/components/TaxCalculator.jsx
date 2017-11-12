@@ -120,7 +120,7 @@ class TaxCalculator extends Component {
                 </form>
 
                 {this.state.showTotalTax &&
-                <p>মোট করযোগ্য আয়: {this.state.totalTax}</p>
+                    <p>মোট করযোগ্য আয়: {this.state.totalTax}</p>
                 }
             </div>
         );
