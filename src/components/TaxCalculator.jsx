@@ -5,7 +5,8 @@ import {
     getLowerValue,
     getInvestmentAllowance,
     getTaxRebate,
-    getTaxLiability} from '../utils/utils';
+    getTaxLiability,
+    getTaxableHouseRent} from '../utils/utils';
 
 class TaxCalculator extends Component {
     constructor(props) {
@@ -65,7 +66,7 @@ class TaxCalculator extends Component {
 
         let taxableBasicSalary = getYearlyGross(inputValues.basicSalary);
         let taxableTotalBonus = inputValues.totalBonus;
-        let taxableHouseRent = getYearlyGross(this.getTaxableHouseRent(inputValues.houseRent, inputValues.basicSalary));
+        let taxableHouseRent = getYearlyGross(getTaxableHouseRent(inputValues.houseRent, inputValues.basicSalary));
         let taxableMedicalAllowance = this.getTaxableMedicalAllowance(inputValues.medicalAllowance, inputValues.basicSalary);
         let taxableConveyanceAllowance = this.getTaxableConveyanceAllowance(inputValues.conveyanceAllowance);
 
