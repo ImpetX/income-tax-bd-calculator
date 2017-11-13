@@ -21,14 +21,6 @@ class TaxCalculator extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    getTaxableHouseRent(houseRent, basicSalary) {
-        const THRESHOLD_HOUSE_RENT = 25000;
-        let halfOfBasicSalary = basicSalary/2;
-        let deductibleAmount = getLowerValue(THRESHOLD_HOUSE_RENT, halfOfBasicSalary);
-
-        return houseRent > deductibleAmount ? houseRent - deductibleAmount : 0;
-    }
-
     getTaxableMedicalAllowance(medicalAllowance, basicSalary) {
         const THRESHOLD_MEDICAL_ALLOWANCE = 120000;
         let tenthOfBasicSalary = getYearlyGross(basicSalary * 0.1);
