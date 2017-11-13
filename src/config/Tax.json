@@ -16,16 +16,16 @@
     "TaxFeeThreshold": {
         "Group_1": {
             "Income": 250000,
-            "Tax": 0
+            "TaxRate": 0
         },
 
         "Group_2": {
             "Income": 400000,
-            "Tax": 0.1
+            "TaxRate": 0.1
         },
 
         "Rest": {
-            "Tax": 0.15
+            "TaxRate": 0.15
         }
     }
 }
