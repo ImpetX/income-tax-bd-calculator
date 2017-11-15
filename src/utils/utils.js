@@ -4,6 +4,7 @@ import getInvestmentAllowance from './getInvestementAllowance';
 import getTaxRebate from './getTaxRebate';
 import getTaxLiability from './getTaxLiability';
 import getTaxableHouseRent from './getTaxableHouseRent';
+import getTaxableMedicalAllowance from './getTaxableMedicalAllowance';
 
 export {
     getYearlyGross,
@@ -11,5 +12,6 @@ export {
     getInvestmentAllowance,
     getTaxRebate,
     getTaxLiability,
-    getTaxableHouseRent
+    getTaxableHouseRent,
+    getTaxableMedicalAllowance
 };
