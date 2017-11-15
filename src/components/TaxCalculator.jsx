@@ -7,7 +7,8 @@ import {
     getTaxRebate,
     getTaxLiability,
     getTaxableHouseRent,
-    getTaxableMedicalAllowance} from '../utils/utils';
+    getTaxableMedicalAllowance,
+    getTaxableConveyanceAllowance} from '../utils/utils';
 
 class TaxCalculator extends Component {
     constructor(props) {
@@ -20,12 +21,6 @@ class TaxCalculator extends Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    getTaxableConveyanceAllowance(conveyanceAllowance) {
-        const THRESHOLD_CONVEYANCE_ALLOWANCE = 30000;
-
-        return getYearlyGross(conveyanceAllowance) > THRESHOLD_CONVEYANCE_ALLOWANCE ? getYearlyGross(conveyanceAllowance) - THRESHOLD_CONVEYANCE_ALLOWANCE : 0;
     }
 
     handleChange(e) {
@@ -52,7 +47,7 @@ class TaxCalculator extends Component {
         let taxableTotalBonus = inputValues.totalBonus;
         let taxableHouseRent = getYearlyGross(getTaxableHouseRent(inputValues.houseRent, inputValues.basicSalary));
         let taxableMedicalAllowance = getTaxableMedicalAllowance(inputValues.medicalAllowance, inputValues.basicSalary);
-        let taxableConveyanceAllowance = this.getTaxableConveyanceAllowance(inputValues.conveyanceAllowance);
+        let taxableConveyanceAllowance = getTaxableConveyanceAllowance(inputValues.conveyanceAllowance);
 
         let totalTaxableIncome = taxableBasicSalary + taxableTotalBonus + taxableHouseRent + taxableMedicalAllowance + taxableConveyanceAllowance;
 
