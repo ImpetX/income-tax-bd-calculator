@@ -6,6 +6,7 @@ import getTaxLiability from './getTaxLiability';
 import getTaxableHouseRent from './getTaxableHouseRent';
 import getTaxableMedicalAllowance from './getTaxableMedicalAllowance';
 import getTaxableConveyanceAllowance from './getTaxableConveyanceAllowance';
+import getSumOfObjectValues from './getSumOfObjectValues';
 
 export {
     getYearlyGross,
@@ -15,5 +16,6 @@ export {
     getTaxLiability,
     getTaxableHouseRent,
     getTaxableMedicalAllowance,
-    getTaxableConveyanceAllowance
+    getTaxableConveyanceAllowance,
+    getSumOfObjectValues
 };

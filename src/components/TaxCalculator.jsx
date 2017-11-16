@@ -8,7 +8,8 @@ import {
     getTaxLiability,
     getTaxableHouseRent,
     getTaxableMedicalAllowance,
-    getTaxableConveyanceAllowance} from '../utils/utils';
+    getTaxableConveyanceAllowance,
+    getSumOfObjectValues} from '../utils/utils';
 
 class TaxCalculator extends Component {
     constructor(props) {
@@ -43,13 +44,15 @@ class TaxCalculator extends Component {
             totalInvestment: Number(this.TotalInvestment.value)
         };
 
-        let taxableBasicSalary = getYearlyGross(inputValues.basicSalary);
-        let taxableTotalBonus = inputValues.totalBonus;
-        let taxableHouseRent = getYearlyGross(getTaxableHouseRent(inputValues.houseRent, inputValues.basicSalary));
-        let taxableMedicalAllowance = getTaxableMedicalAllowance(inputValues.medicalAllowance, inputValues.basicSalary);
-        let taxableConveyanceAllowance = getTaxableConveyanceAllowance(inputValues.conveyanceAllowance);
+        let taxable = {
+            basicSalary: getYearlyGross(inputValues.basicSalary),
+            totalBonus: inputValues.totalBonus,
+            houseRent: getYearlyGross(getTaxableHouseRent(inputValues.houseRent, inputValues.basicSalary)),
+            medicalAllowance: getTaxableMedicalAllowance(inputValues.medicalAllowance, inputValues.basicSalary),
+            conveyanceAllowance: getTaxableConveyanceAllowance(inputValues.conveyanceAllowance)
+        };
 
-        let totalTaxableIncome = taxableBasicSalary + taxableTotalBonus + taxableHouseRent + taxableMedicalAllowance + taxableConveyanceAllowance;
+        let totalTaxableIncome = getSumOfObjectValues(taxable);
 
         let taxLiability  = getTaxLiability(totalTaxableIncome);
         let maxInvestmentAllowance = getInvestmentAllowance(totalTaxableIncome);
