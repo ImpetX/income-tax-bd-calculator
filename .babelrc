@@ -9,7 +9,8 @@
         "react"
     ],
     "plugins": [
-        "react-hot-loader/babel"  // Enables React code to work with HMR
+        "react-hot-loader/babel",  // Enables React code to work with HMR
+        "transform-class-properties"
     ],
 
     "env": {

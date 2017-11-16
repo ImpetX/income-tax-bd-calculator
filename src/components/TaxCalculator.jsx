@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 
+import InputBlock from '../components/lib/InputBlock';
+import Button from '../components/lib/Button';
+
 import {
     getYearlyGross,
     getLowerValue,
@@ -36,20 +39,20 @@ class TaxCalculator extends Component {
         e.preventDefault();
 
         let inputValues = {
-            basicSalary: Number(this.BasicSalary.value),
-            totalBonus: Number(this.TotalBonus.value),
-            houseRent: Number(this.HouseRent.value),
-            medicalAllowance: Number(this.MedicalAllowance.value),
-            conveyanceAllowance: Number(this.ConveyanceAllowance.value),
-            totalInvestment: Number(this.TotalInvestment.value)
+            basicSalary: Number(document.getElementById('BasicSalary').value),
+            houseRent: Number(document.getElementById('HouseRent').value),
+            medicalAllowance: Number(document.getElementById('MedicalAllowance').value),
+            conveyanceAllowance: Number(document.getElementById('ConveyanceAllowance').value),
+            totalBonus: Number(document.getElementById('TotalBonus').value),
+            totalInvestment: Number(document.getElementById('TotalInvestment').value)
         };
 
         let taxable = {
             basicSalary: getYearlyGross(inputValues.basicSalary),
-            totalBonus: inputValues.totalBonus,
             houseRent: getYearlyGross(getTaxableHouseRent(inputValues.houseRent, inputValues.basicSalary)),
             medicalAllowance: getTaxableMedicalAllowance(inputValues.medicalAllowance, inputValues.basicSalary),
-            conveyanceAllowance: getTaxableConveyanceAllowance(inputValues.conveyanceAllowance)
+            conveyanceAllowance: getTaxableConveyanceAllowance(inputValues.conveyanceAllowance),
+            totalBonus: inputValues.totalBonus
         };
 
         let totalTaxableIncome = getSumOfObjectValues(taxable);
@@ -69,55 +72,39 @@ class TaxCalculator extends Component {
         return (
             <div className='wrapper'>
                 <form onSubmit={this.handleSubmit}>
-                    <div className='mb--15'>
-                        <label>মূল বেতন (মাসিক) / Basic Salary (Monthly)</label>
-                        <input
-                            type="text"
-                            ref={input => this.BasicSalary = input}
-                            onChange={this.handleChange}/>
-                    </div>
+                    <InputBlock
+                        label='মূল বেতন (মাসিক) / Basic Salary (Monthly)'
+                        id='BasicSalary'
+                        onChange={this.handleChange}/>
 
-                    <div className='mb--15'>
-                        <label>বাড়ি ভাড়া (মাসিক) / House Rent (Monthly)</label>
-                        <input
-                            type="text"
-                            ref={input => this.HouseRent = input}
-                            onChange={this.handleChange}/>
-                    </div>
+                    <InputBlock
+                        label='বাড়ি ভাড়া (মাসিক) / House Rent (Monthly)'
+                        id='HouseRent'
+                        onChange={this.handleChange}/>
 
-                    <div className='mb--15'>
-                        <label>চিকিৎসা ভাতা (মাসিক) / Medical Allowance (Monthly)</label>
-                        <input
-                            type="text"
-                            ref={input => this.MedicalAllowance = input}
-                            onChange={this.handleChange}/>
-                    </div>
+                    <InputBlock
+                        label='চিকিৎসা ভাতা (মাসিক) / Medical Allowance (Monthly)'
+                        id='MedicalAllowance'
+                        onChange={this.handleChange}/>
 
-                    <div className='mb--15'>
-                        <label>পরিবহন ভাতা (মাসিক) / Medical Allowance (Monthly)</label>
-                        <input
-                            type="text"
-                            ref={input => this.ConveyanceAllowance = input}
-                            onChange={this.handleChange}/>
-                    </div>
+                    <InputBlock
+                        label='পরিবহন ভাতা (মাসিক) / Conveyance Allowance (Monthly)'
+                        id='ConveyanceAllowance'
+                        onChange={this.handleChange}/>
 
-                    <div className='mb--15'>
-                        <label>মোট বোনাস (বাৎসরিক) / Total Yearly Bonus (Yearly)</label>
-                        <input
-                            type="text"
-                            ref={input => this.TotalBonus = input}
-                            onChange={this.handleChange}/>
-                    </div>
+                    <InputBlock
+                        label='মোট বোনাস (বাৎসরিক) / Total Yearly Bonus (Yearly)'
+                        id='TotalBonus'
+                        onChange={this.handleChange}/>
 
-                    <div className='mb--15'>
-                        <label>মোট বিনিয়োগ (বাৎসরিক) / Total Investement (Yearly)</label>
-                        <input
-                            type="text"
-                            ref={input => this.TotalInvestment = input}
-                            onChange={this.handleChange}/>
-                    </div>
+                    <InputBlock
+                        label='মোট বিনিয়োগ (বাৎসরিক) / Total Investement (Yearly)'
+                        id='TotalInvestment'
+                        onChange={this.handleChange}/>
 
-                    <button type='submit'>মোট কর দেখুন / View Total Tax</button>
+                    <Button
+                        type='submit'
+                        label='মোট কর দেখুন / View Total Tax'/>
                 </form>
 
                 {this.state.showTotalTax &&
