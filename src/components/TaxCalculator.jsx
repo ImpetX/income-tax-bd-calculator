@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 
 import InputBlock from '../components/lib/InputBlock';
 import Button from '../components/lib/Button';
-
 import {
     getYearlyGross,
     getLowerValue,
@@ -13,6 +12,39 @@ import {
     getTaxableMedicalAllowance,
     getTaxableConveyanceAllowance,
     getSumOfObjectValues} from '../utils/utils';
+
+let inputBlockValues = [
+    {
+        label: 'মূল বেতন (মাসিক) / Basic Salary (Monthly)',
+        id: 'BasicSalary',
+        onChange: this.handleChange
+    },
+    {
+        label: 'বাড়ি ভাড়া (মাসিক) / House Rent (Monthly)',
+        id: 'HouseRent',
+        onChange: this.handleChange
+    },
+    {
+        label: 'চিকিৎসা ভাতা (মাসিক) / Medical Allowance (Monthly)',
+        id: 'MedicalAllowance',
+        onChange: this.handleChange
+    },
+    {
+        label: 'পরিবহন ভাতা (মাসিক) / Conveyance Allowance (Monthly)',
+        id: 'ConveyanceAllowance',
+        onChange: this.handleChange
+    },
+    {
+        label: 'মোট বোনাস (বাৎসরিক) / Total Yearly Bonus (Yearly)',
+        id: 'TotalBonus',
+        onChange: this.handleChange
+    },
+    {
+        label: 'মোট বিনিয়োগ (বাৎসরিক) / Total Investement (Yearly)',
+        id: 'TotalInvestment',
+        onChange: this.handleChange
+    }
+];
 
 class TaxCalculator extends Component {
     constructor(props) {
@@ -72,35 +104,13 @@ class TaxCalculator extends Component {
         return (
             <div className='wrapper'>
                 <form onSubmit={this.handleSubmit}>
-                    <InputBlock
-                        label='মূল বেতন (মাসিক) / Basic Salary (Monthly)'
-                        id='BasicSalary'
-                        onChange={this.handleChange}/>
-
-                    <InputBlock
-                        label='বাড়ি ভাড়া (মাসিক) / House Rent (Monthly)'
-                        id='HouseRent'
-                        onChange={this.handleChange}/>
-
-                    <InputBlock
-                        label='চিকিৎসা ভাতা (মাসিক) / Medical Allowance (Monthly)'
-                        id='MedicalAllowance'
-                        onChange={this.handleChange}/>
-
-                    <InputBlock
-                        label='পরিবহন ভাতা (মাসিক) / Conveyance Allowance (Monthly)'
-                        id='ConveyanceAllowance'
-                        onChange={this.handleChange}/>
-
-                    <InputBlock
-                        label='মোট বোনাস (বাৎসরিক) / Total Yearly Bonus (Yearly)'
-                        id='TotalBonus'
-                        onChange={this.handleChange}/>
-
-                    <InputBlock
-                        label='মোট বিনিয়োগ (বাৎসরিক) / Total Investement (Yearly)'
-                        id='TotalInvestment'
-                        onChange={this.handleChange}/>
+                    {inputBlockValues.map(el => (
+                        <InputBlock
+                            key={el.id}
+                            label={el.label}
+                            id={el.id}
+                            onChange={el.onChange}/>
+                    ))}
 
                     <Button
                         type='submit'
