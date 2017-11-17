@@ -27,5 +27,14 @@
         "Rest": {
             "TaxRate": 0.15
         }
+    },
+
+    "MinTaxCeiling": {
+        "CityCorporation": {
+            "Dhaka": 5000,
+            "Chittagong": 5000,
+            "Others": 4000
+        },
+        "NonCityCorporation": 3000
     }
 }

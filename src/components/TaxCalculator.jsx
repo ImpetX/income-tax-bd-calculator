@@ -11,7 +11,9 @@ import {
     getTaxableMedicalAllowance,
     getTaxableConveyanceAllowance,
     getSumOfObjectValues,
-    getInputValue} from '../utils/utils';
+    getInputValue,
+    getMinTax,
+    getTotalTax} from '../utils/utils';
 import InputBlock from '../components/lib/InputBlock';
 import Button from '../components/lib/Button';
 
@@ -61,7 +63,8 @@ class TaxCalculator extends Component {
         let taxLiability  = getTaxLiability(totalTaxableIncome);
         let maxInvestmentAllowance = getInvestmentAllowance(totalTaxableIncome);
         let taxRebate = getTaxRebate(maxInvestmentAllowance, inputValues.totalInvestment);
-        let totalTax = taxLiability - taxRebate;
+        let minTax = getMinTax(true, 'Dhaka');
+        let totalTax = getTotalTax((taxLiability - taxRebate), minTax);
 
         this.setState({
             totalTax,

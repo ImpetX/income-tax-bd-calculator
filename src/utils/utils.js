@@ -8,6 +8,8 @@ import getTaxableMedicalAllowance from './getTaxableMedicalAllowance';
 import getTaxableConveyanceAllowance from './getTaxableConveyanceAllowance';
 import getSumOfObjectValues from './getSumOfObjectValues';
 import getInputValue from './getInputValue';
+import getMinTax from './getMinTax';
+import getTotalTax from './getTotalTax';
 
 export {
     getYearlyGross,
@@ -19,5 +21,7 @@ export {
     getTaxableMedicalAllowance,
     getTaxableConveyanceAllowance,
     getSumOfObjectValues,
-    getInputValue
+    getInputValue,
+    getMinTax,
+    getTotalTax
 };
