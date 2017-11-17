@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 
-import InputBlock from '../components/lib/InputBlock';
-import Button from '../components/lib/Button';
+import inputBlockValues from '../data/TaxCalculator';
 import {
     getYearlyGross,
     getLowerValue,
@@ -11,40 +10,10 @@ import {
     getTaxableHouseRent,
     getTaxableMedicalAllowance,
     getTaxableConveyanceAllowance,
-    getSumOfObjectValues} from '../utils/utils';
-
-let inputBlockValues = [
-    {
-        label: 'মূল বেতন (মাসিক) / Basic Salary (Monthly)',
-        id: 'BasicSalary',
-        onChange: this.handleChange
-    },
-    {
-        label: 'বাড়ি ভাড়া (মাসিক) / House Rent (Monthly)',
-        id: 'HouseRent',
-        onChange: this.handleChange
-    },
-    {
-        label: 'চিকিৎসা ভাতা (মাসিক) / Medical Allowance (Monthly)',
-        id: 'MedicalAllowance',
-        onChange: this.handleChange
-    },
-    {
-        label: 'পরিবহন ভাতা (মাসিক) / Conveyance Allowance (Monthly)',
-        id: 'ConveyanceAllowance',
-        onChange: this.handleChange
-    },
-    {
-        label: 'মোট বোনাস (বাৎসরিক) / Total Yearly Bonus (Yearly)',
-        id: 'TotalBonus',
-        onChange: this.handleChange
-    },
-    {
-        label: 'মোট বিনিয়োগ (বাৎসরিক) / Total Investement (Yearly)',
-        id: 'TotalInvestment',
-        onChange: this.handleChange
-    }
-];
+    getSumOfObjectValues,
+    getInputValue} from '../utils/utils';
+import InputBlock from '../components/lib/InputBlock';
+import Button from '../components/lib/Button';
 
 class TaxCalculator extends Component {
     constructor(props) {
@@ -71,12 +40,12 @@ class TaxCalculator extends Component {
         e.preventDefault();
 
         let inputValues = {
-            basicSalary: Number(document.getElementById('BasicSalary').value),
-            houseRent: Number(document.getElementById('HouseRent').value),
-            medicalAllowance: Number(document.getElementById('MedicalAllowance').value),
-            conveyanceAllowance: Number(document.getElementById('ConveyanceAllowance').value),
-            totalBonus: Number(document.getElementById('TotalBonus').value),
-            totalInvestment: Number(document.getElementById('TotalInvestment').value)
+            basicSalary: getInputValue('BasicSalary'),
+            houseRent: getInputValue('HouseRent'),
+            medicalAllowance: getInputValue('MedicalAllowance'),
+            conveyanceAllowance: getInputValue('ConveyanceAllowance'),
+            totalBonus: getInputValue('TotalBonus'),
+            totalInvestment: getInputValue('TotalInvestment')
         };
 
         let taxable = {
