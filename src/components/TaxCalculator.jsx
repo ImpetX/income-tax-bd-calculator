@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 import inputBlockValues from '../data/TaxCalculator';
 import {CityCorporationCheckData,
-    CityCorporations} from '../data/PlaceSelect';
+    CityCorporations} from '../data/LocationSelect';
 import {
     getYearlyGross,
     getLowerValue,
