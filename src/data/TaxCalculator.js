@@ -1,4 +1,4 @@
-let inputBlockValues = [
+const inputBlockValues = [
     {
         label: 'মূল বেতন (মাসিক) / Basic Salary (Monthly)',
         id: 'BasicSalary',

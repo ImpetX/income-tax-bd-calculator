@@ -2,7 +2,7 @@ import {get} from 'object-path';
 
 import constants from '../config/Tax';
 
-function getMinTax(isInCityCorporation, locatio = 'Others') {
+function getMinTax(isInCityCorporation, location) {
     let minTax = 0;
     if (isInCityCorporation) {
         switch(location) {

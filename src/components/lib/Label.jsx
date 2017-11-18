@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Label = ({label}) => (
-    <label>{label}</label>
+    <label className='label'>{label}</label>
 );
 
 Label.propTypes = {

@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 
 import inputBlockValues from '../data/TaxCalculator';
+import {CityCorporationCheckData,
+    CityCorporations} from '../data/PlaceSelect';
 import {
     getYearlyGross,
     getLowerValue,
@@ -15,6 +17,7 @@ import {
     getMinTax,
     getTotalTax} from '../utils/utils';
 import InputBlock from '../components/lib/InputBlock';
+import SelectBlock from '../components/lib/SelectBlock';
 import Button from '../components/lib/Button';
 
 class TaxCalculator extends Component {
@@ -23,10 +26,14 @@ class TaxCalculator extends Component {
 
         this.state = {
             totalTax: 0,
-            showTotalTax: false
+            showTotalTax: false,
+            enableLocationSelection: false,
+            location: null
         };
 
         this.handleChange = this.handleChange.bind(this);
+        this.handleCityCorporationCheckChange = this.handleCityCorporationCheckChange.bind(this);
+        this.handleLocationChange = this.handleLocationChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -36,6 +43,32 @@ class TaxCalculator extends Component {
         this.setState({
             showTotalTax: false
         });
+    }
+
+    handleCityCorporationCheckChange(e) {
+        e.preventDefault();
+
+        if(e.target.value === 'yes') {
+            this.setState({
+                enableLocationSelection: true
+            });
+        } else {
+            this.setState({
+                enableLocationSelection: false
+            });
+        }
+    }
+
+    handleLocationChange(e) {
+        e.preventDefault();
+
+        this.setState({
+            location: e.target.value
+        });
+    }
+
+    getTaxAreaParams(hasArea, location) {
+        return {hasArea, location};
     }
 
     handleSubmit(e) {
@@ -63,7 +96,8 @@ class TaxCalculator extends Component {
         let taxLiability  = getTaxLiability(totalTaxableIncome);
         let maxInvestmentAllowance = getInvestmentAllowance(totalTaxableIncome);
         let taxRebate = getTaxRebate(maxInvestmentAllowance, inputValues.totalInvestment);
-        let minTax = getMinTax(true, 'Dhaka');
+        let params = this.getTaxAreaParams(this.state.enableLocationSelection, this.state.location);
+        let minTax = getMinTax(params.hasArea, params.location);
         let totalTax = getTotalTax((taxLiability - taxRebate), minTax);
 
         this.setState({
@@ -84,9 +118,25 @@ class TaxCalculator extends Component {
                             onChange={el.onChange}/>
                     ))}
 
-                    <Button
-                        type='submit'
-                        label='মোট কর দেখুন / View Total Tax'/>
+                    <SelectBlock
+                        label='আপনি কি সিটি কর্পোরেশনের বাসিন্দা? / Do you live in city corporation?'
+                        onChange={this.handleCityCorporationCheckChange}
+                        options={CityCorporationCheckData}
+                        inlineBlock/>
+
+                    {this.state.enableLocationSelection &&
+                        <SelectBlock
+                            label='স্থান নির্বাচন করুন / Select your location'
+                            onChange={this.handleLocationChange}
+                            options={CityCorporations}
+                            inlineBlock/>
+                    }
+
+                    <div>
+                        <Button
+                            type='submit'
+                            label='মোট কর দেখুন / View Total Tax'/>
+                    </div>
                 </form>
 
                 {this.state.showTotalTax &&
