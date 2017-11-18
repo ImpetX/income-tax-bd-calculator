@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 
+import Months from '../data/Months';
 import inputBlockValues from '../data/TaxCalculator';
 import {CityCorporationCheckData,
     CityCorporations} from '../data/LocationSelect';
@@ -110,6 +111,10 @@ class TaxCalculator extends Component {
         return (
             <div className='wrapper'>
                 <form onSubmit={this.handleSubmit}>
+                    <SelectBlock
+                        label='যে কয় মাসের জন্য ট্যাক্স নিরুপণ করতে চান নির্বাচন করুন / Select the number of months you want to calculate for'
+                        options={Months}/>
+
                     {inputBlockValues.map(el => (
                         <InputBlock
                             key={el.id}
