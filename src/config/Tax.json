@@ -1,6 +1,7 @@
 {
     "HouseRent": {
-        "Threshold": 300000,
+        "Threshold": 25000,
+        "comments": "monthly",
         "Percentage": 0.5
     },
 

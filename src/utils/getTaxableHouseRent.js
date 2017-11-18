@@ -1,11 +1,16 @@
 import getLowerValue from './getLowerValue';
+import  multiplyByMonths from './multiplyByMonths';
 
-function getTaxableHouseRent(houseRent, basicSalary) {
-    const THRESHOLD_HOUSE_RENT = 25000; // monthly
-    let halfOfBasicSalary = basicSalary/2;
-    let deductibleAmount = getLowerValue(THRESHOLD_HOUSE_RENT, halfOfBasicSalary);
+function getTaxableHouseRent(houseRent, thresholdHouseRent, basicSalary, months) {
+    let gross = {
+        houseRent: multiplyByMonths(houseRent, months),
+        thresholdHouseRent: multiplyByMonths(thresholdHouseRent, months),
+        basicSalary: multiplyByMonths(basicSalary, months)
+    };
 
-    return houseRent > deductibleAmount ? houseRent - deductibleAmount : 0;
+    let deductibleAmount = getLowerValue(gross.thresholdHouseRent, (gross.basicSalary)/2);
+
+    return gross.houseRent > deductibleAmount ? gross.houseRent - deductibleAmount : 0;
 }
 
 export default getTaxableHouseRent;

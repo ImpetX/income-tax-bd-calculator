@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
+import {get} from 'object-path';
 
+import Taxes from '../config/Tax';
 import Months from '../data/Months';
 import inputBlockValues from '../data/TaxCalculator';
 import {CityCorporationCheckData,
@@ -97,7 +99,11 @@ class TaxCalculator extends Component {
 
         let taxable = {
             basicSalary: getTaxableBasicSalary(inputValues.basicSalary, this.state.numberOfMonths),
-            houseRent: getYearlyGross(getTaxableHouseRent(inputValues.houseRent, inputValues.basicSalary)),
+            houseRent: getTaxableHouseRent(
+                inputValues.houseRent,
+                get(Taxes, 'HouseRent.Threshold'),
+                inputValues.basicSalary,
+                this.state.numberOfMonths),
             medicalAllowance: getTaxableMedicalAllowance(inputValues.medicalAllowance, inputValues.basicSalary),
             conveyanceAllowance: getTaxableConveyanceAllowance(inputValues.conveyanceAllowance),
             totalBonus: inputValues.totalBonus

@@ -1,11 +1,7 @@
-import isUnvalidInput from './isUnvalidInput';
+import multiplyByMonths from './multiplyByMonths';
 
 function getTaxableBasicSalary(salary, months) {
-    if (isUnvalidInput(months)) {
-        return salary * 12;
-    } else {
-        return salary * months;
-    }
+    return multiplyByMonths(salary, months);
 }
 
 export default getTaxableBasicSalary;
