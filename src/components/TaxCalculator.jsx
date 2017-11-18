@@ -29,13 +29,23 @@ class TaxCalculator extends Component {
             totalTax: 0,
             showTotalTax: false,
             enableLocationSelection: false,
-            location: null
+            location: null,
+            numberOfMonths: 12
         };
 
         this.handleChange = this.handleChange.bind(this);
+        this.handleMonthsChange = this.handleMonthsChange.bind(this);
         this.handleCityCorporationCheckChange = this.handleCityCorporationCheckChange.bind(this);
         this.handleLocationChange = this.handleLocationChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleMonthsChange(e) {
+        e.preventDefault();
+
+        this.setState({
+            numberOfMonths: e.target.value
+        });
     }
 
     handleChange(e) {
@@ -113,6 +123,7 @@ class TaxCalculator extends Component {
                 <form onSubmit={this.handleSubmit}>
                     <SelectBlock
                         label='যে কয় মাসের জন্য ট্যাক্স নিরুপণ করতে চান নির্বাচন করুন / Select the number of months you want to calculate for'
+                        onChange={this.handleMonthsChange}
                         options={Months}/>
 
                     {inputBlockValues.map(el => (
