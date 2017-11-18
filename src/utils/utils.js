@@ -3,6 +3,7 @@ import getLowerValue from './getLowerValue';
 import getInvestmentAllowance from './getInvestementAllowance';
 import getTaxRebate from './getTaxRebate';
 import getTaxLiability from './getTaxLiability';
+import getTaxableBasicSalary from './getTaxableBasicSalary';
 import getTaxableHouseRent from './getTaxableHouseRent';
 import getTaxableMedicalAllowance from './getTaxableMedicalAllowance';
 import getTaxableConveyanceAllowance from './getTaxableConveyanceAllowance';
@@ -17,6 +18,7 @@ export {
     getInvestmentAllowance,
     getTaxRebate,
     getTaxLiability,
+    getTaxableBasicSalary,
     getTaxableHouseRent,
     getTaxableMedicalAllowance,
     getTaxableConveyanceAllowance,

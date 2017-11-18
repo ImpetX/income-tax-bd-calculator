@@ -10,6 +10,7 @@ import {
     getInvestmentAllowance,
     getTaxRebate,
     getTaxLiability,
+    getTaxableBasicSalary,
     getTaxableHouseRent,
     getTaxableMedicalAllowance,
     getTaxableConveyanceAllowance,
@@ -95,7 +96,7 @@ class TaxCalculator extends Component {
         };
 
         let taxable = {
-            basicSalary: getYearlyGross(inputValues.basicSalary),
+            basicSalary: getTaxableBasicSalary(inputValues.basicSalary, this.state.numberOfMonths),
             houseRent: getYearlyGross(getTaxableHouseRent(inputValues.houseRent, inputValues.basicSalary)),
             medicalAllowance: getTaxableMedicalAllowance(inputValues.medicalAllowance, inputValues.basicSalary),
             conveyanceAllowance: getTaxableConveyanceAllowance(inputValues.conveyanceAllowance),
