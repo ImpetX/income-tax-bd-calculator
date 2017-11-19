@@ -135,7 +135,7 @@ class TaxCalculator extends Component {
             <div className='wrapper'>
                 <form onSubmit={this.handleSubmit}>
                     <SelectBlock
-                        label='যে কয় মাসের জন্য ট্যাক্স নিরুপণ করতে চান নির্বাচন করুন / Select the number of months you want to calculate for'
+                        label='যে কয় মাসের জন্য ট্যাক্স নিরুপণ করতে চান নির্বাচন করুন / Select the number of months you want the calculations for'
                         onChange={this.handleMonthsChange}
                         options={Months}/>
 
