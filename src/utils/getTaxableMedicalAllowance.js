@@ -1,13 +1,15 @@
 import getLowerValue from './getLowerValue';
-import getYearlyGross from './getYearlyGross';
+import multiplyByMonths from './multiplyByMonths';
 
-function getTaxableMedicalAllowance(medicalAllowance, basicSalary) {
-    const THRESHOLD_MEDICAL_ALLOWANCE = 120000;
-    let tenthOfBasicSalary = getYearlyGross(basicSalary * 0.1);
+function getTaxableMedicalAllowance(medicalAllowance, thresholdMedicalAllowance, basicSalary, months) {
+    let gross = {
+        medicalAllowance: multiplyByMonths(medicalAllowance, months),
+        tenthOfBasicSalary: multiplyByMonths((basicSalary * 0.1), months)
+    };
 
-    let deductibleAmount = getLowerValue(THRESHOLD_MEDICAL_ALLOWANCE, tenthOfBasicSalary);
+    let deductibleAmount = getLowerValue(thresholdMedicalAllowance, gross.tenthOfBasicSalary);
 
-    return getYearlyGross(medicalAllowance) > deductibleAmount ? getYearlyGross(medicalAllowance) - deductibleAmount : 0;
+    return gross.medicalAllowance > deductibleAmount ? gross.medicalAllowance - deductibleAmount : 0;
 }
 
 export default getTaxableMedicalAllowance;
