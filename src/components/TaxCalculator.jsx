@@ -7,7 +7,6 @@ import inputBlockValues from '../data/TaxCalculator';
 import {CityCorporationCheckData,
     CityCorporations} from '../data/LocationSelect';
 import {
-    getYearlyGross,
     getLowerValue,
     getInvestmentAllowance,
     getTaxRebate,
