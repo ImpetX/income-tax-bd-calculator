@@ -98,20 +98,24 @@ class TaxCalculator extends Component {
 
         let taxable = {
             basicSalary: getTaxableBasicSalary(inputValues.basicSalary, this.state.numberOfMonths),
+
             houseRent: getTaxableHouseRent(
                 inputValues.houseRent,
                 get(Taxes, 'HouseRent.Threshold'),
                 inputValues.basicSalary,
                 this.state.numberOfMonths),
+
             medicalAllowance: getTaxableMedicalAllowance(
                 inputValues.medicalAllowance,
                 get(Taxes, 'MedicalAllowance.Threshold'),
                 inputValues.basicSalary,
                 this.state.numberOfMonths),
+
             conveyanceAllowance: getTaxableConveyanceAllowance(
                 inputValues.conveyanceAllowance,
                 get(Taxes, 'ConveyanceAllowance.Threshold'),
                 this.state.numberOfMonths),
+
             totalBonus: inputValues.totalBonus
         };
 
@@ -119,7 +123,10 @@ class TaxCalculator extends Component {
 
         let taxLiability  = getTaxLiability(totalTaxableIncome);
         let maxInvestmentAllowance = getInvestmentAllowance(totalTaxableIncome, get(Taxes, 'Investment.Allowance'));
-        let taxRebate = getTaxRebate(maxInvestmentAllowance, inputValues.totalInvestment);
+        let taxRebate = getTaxRebate(
+            maxInvestmentAllowance,
+            inputValues.totalInvestment,
+            get(Taxes, 'Investment.TaxRate'));
         let params = this.getTaxAreaParams(this.state.enableLocationSelection, this.state.location);
         let minTax = getMinTax(params.hasArea, params.location);
         let totalTax = getTotalTax((taxLiability - taxRebate), minTax);

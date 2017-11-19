@@ -19,7 +19,7 @@
         "TaxRate": 0.15
     },
 
-    "TaxFeeThreshold": {
+    "TaxFreeThreshold": {
         "Group_1": {
             "Income": 250000,
             "TaxRate": 0

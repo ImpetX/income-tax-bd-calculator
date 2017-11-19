@@ -1,7 +1,7 @@
-function getTaxRebate(maxInvestmentAllowance, investedAmount) {
+function getTaxRebate(maxInvestmentAllowance, investedAmount, taxOnInvestment) {
     let allowableInvestment = investedAmount > maxInvestmentAllowance ? maxInvestmentAllowance : investedAmount;
 
-    return allowableInvestment * 0.15;
+    return allowableInvestment * taxOnInvestment;
 }
 
 export default getTaxRebate;
