@@ -1,9 +1,8 @@
-import getYearlyGross from './getYearlyGross';
+import multiplyByMonths from './multiplyByMonths';
 
-function getTaxableConveyanceAllowance(conveyanceAllowance) {
-    const THRESHOLD_CONVEYANCE_ALLOWANCE = 30000;
+function getTaxableConveyanceAllowance(conveyanceAllowance, thresholdConveyanceAllowance, months) {
 
-    return getYearlyGross(conveyanceAllowance) > THRESHOLD_CONVEYANCE_ALLOWANCE ? getYearlyGross(conveyanceAllowance) - THRESHOLD_CONVEYANCE_ALLOWANCE : 0;
+    return multiplyByMonths(conveyanceAllowance, months) > thresholdConveyanceAllowance ? multiplyByMonths(conveyanceAllowance, months) - thresholdConveyanceAllowance : 0;
 }
 
 export default getTaxableConveyanceAllowance;
