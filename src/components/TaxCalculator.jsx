@@ -118,7 +118,7 @@ class TaxCalculator extends Component {
         let totalTaxableIncome = getSumOfObjectValues(taxable);
 
         let taxLiability  = getTaxLiability(totalTaxableIncome);
-        let maxInvestmentAllowance = getInvestmentAllowance(totalTaxableIncome);
+        let maxInvestmentAllowance = getInvestmentAllowance(totalTaxableIncome, get(Taxes, 'Investment.Allowance'));
         let taxRebate = getTaxRebate(maxInvestmentAllowance, inputValues.totalInvestment);
         let params = this.getTaxAreaParams(this.state.enableLocationSelection, this.state.location);
         let minTax = getMinTax(params.hasArea, params.location);

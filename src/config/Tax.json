@@ -14,6 +14,11 @@
         "Threshold": 30000
     },
 
+    "Investment": {
+        "Allowance": 0.25,
+        "TaxRate": 0.15
+    },
+
     "TaxFeeThreshold": {
         "Group_1": {
             "Income": 250000,

@@ -1,5 +1,5 @@
-function getInvestmentAllowance(taxableIncome) {
-    return taxableIncome * 0.25;
+function getInvestmentAllowance(taxableIncome, investmentAllowance) {
+    return taxableIncome * investmentAllowance;
 }
 
 export default getInvestmentAllowance;
