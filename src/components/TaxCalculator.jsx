@@ -22,6 +22,8 @@ import {
 import InputBlock from '../components/lib/InputBlock';
 import SelectBlock from '../components/lib/SelectBlock';
 import Button from '../components/lib/Button';
+import Portal from '../Portal';
+import Modal from '../components/lib/Modal/Modal';
 
 class TaxCalculator extends Component {
     constructor(props) {
@@ -29,17 +31,17 @@ class TaxCalculator extends Component {
 
         this.state = {
             totalTax: 0,
-            showTotalTax: false,
             enableLocationSelection: false,
             location: null,
-            numberOfMonths: 12
+            numberOfMonths: 12,
+            isModalVisible: false
         };
 
-        this.handleChange = this.handleChange.bind(this);
         this.handleMonthsChange = this.handleMonthsChange.bind(this);
         this.handleCityCorporationCheckChange = this.handleCityCorporationCheckChange.bind(this);
         this.handleLocationChange = this.handleLocationChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.hideModal = this.hideModal.bind(this);
     }
 
     handleMonthsChange(e) {
@@ -47,14 +49,6 @@ class TaxCalculator extends Component {
 
         this.setState({
             numberOfMonths: e.target.value
-        });
-    }
-
-    handleChange(e) {
-        e.preventDefault();
-
-        this.setState({
-            showTotalTax: false
         });
     }
 
@@ -133,53 +127,61 @@ class TaxCalculator extends Component {
 
         this.setState({
             totalTax,
-            showTotalTax: true
+            isModalVisible: true
+        });
+    }
+
+    hideModal() {
+        this.setState({
+            isModalVisible: false
         });
     }
 
     render() {
         return (
-            <div className='wrapper'>
-                <form onSubmit={this.handleSubmit}>
-                    <SelectBlock
-                        label='যে কয় মাসের জন্য ট্যাক্স নিরুপণ করতে চান নির্বাচন করুন / Select the number of months you want the calculations for'
-                        onChange={this.handleMonthsChange}
-                        options={Months}/>
-
-                    {inputBlockValues.map(el => (
-                        <InputBlock
-                            key={el.id}
-                            label={el.label}
-                            id={el.id}
-                            onChange={el.onChange}/>
-                    ))}
-
-                    <SelectBlock
-                        label='আপনি কি সিটি কর্পোরেশনের বাসিন্দা? / Do you live in city corporation?'
-                        onChange={this.handleCityCorporationCheckChange}
-                        options={CityCorporationCheckData}
-                        inlineBlock/>
-
-                    {this.state.enableLocationSelection &&
+            <div>
+                <div className='wrapper'>
+                    <form onSubmit={this.handleSubmit}>
                         <SelectBlock
-                            label='স্থান নির্বাচন করুন / Select your location'
-                            onChange={this.handleLocationChange}
-                            options={CityCorporations}
+                            label='যে কয় মাসের জন্য ট্যাক্স নিরুপণ করতে চান নির্বাচন করুন / Select the number of months you want the calculations for'
+                            onChange={this.handleMonthsChange}
+                            options={Months}/>
+
+                        {inputBlockValues.map(el => (
+                            <InputBlock
+                                key={el.id}
+                                label={el.label}
+                                id={el.id}/>
+                        ))}
+
+                        <SelectBlock
+                            label='আপনি কি সিটি কর্পোরেশনের বাসিন্দা? / Do you live in city corporation?'
+                            onChange={this.handleCityCorporationCheckChange}
+                            options={CityCorporationCheckData}
                             inlineBlock/>
-                    }
 
-                    <div>
-                        <Button
-                            type='submit'
-                            label='মোট কর দেখুন / View Total Tax'/>
-                    </div>
-                </form>
+                        {this.state.enableLocationSelection &&
+                            <SelectBlock
+                                label='স্থান নির্বাচন করুন / Select your location'
+                                onChange={this.handleLocationChange}
+                                options={CityCorporations}
+                                inlineBlock/>
+                        }
 
-                {this.state.showTotalTax &&
-                    <div>
-                        <p>মোট কর: {this.state.totalTax}</p>
-                    </div>
-                }
+                        <div>
+                            <Button
+                                type='submit'
+                                label='মোট কর দেখুন / View Total Tax'/>
+                        </div>
+                    </form>
+                </div>
+                <Portal>
+                    <Modal
+                        visible={this.state.isModalVisible}
+                        onClose={this.hideModal}
+                        totalTax={this.state.totalTax}
+                        onClick={this.hideModal}/>
+                </Portal>
             </div>
         );
     }
