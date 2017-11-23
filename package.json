@@ -33,7 +33,8 @@
     "object-path": "^0.11.4",
     "prop-types": "^15.6.0",
     "react": "^16.1.0",
-    "react-dom": "^16.1.0"
+    "react-dom": "^16.1.0",
+    "rodal": "^1.6.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.6",
