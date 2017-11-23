@@ -22,8 +22,7 @@ import {
 import InputBlock from '../components/lib/InputBlock';
 import SelectBlock from '../components/lib/SelectBlock';
 import Button from '../components/lib/Button';
-import Portal from '../Portal';
-import Modal from '../components/lib/Modal/Modal';
+import ModalPortal from '../ModalPortal';
 
 class TaxCalculator extends Component {
     constructor(props) {
@@ -175,13 +174,11 @@ class TaxCalculator extends Component {
                         </div>
                     </form>
                 </div>
-                <Portal>
-                    <Modal
-                        visible={this.state.isModalVisible}
-                        onClose={this.hideModal}
-                        totalTax={this.state.totalTax}
-                        onClick={this.hideModal}/>
-                </Portal>
+                <ModalPortal
+                    visible={this.state.isModalVisible}
+                    onClose={this.hideModal}
+                    totalTax={this.state.totalTax}
+                    onClick={this.hideModal}/>
             </div>
         );
     }
