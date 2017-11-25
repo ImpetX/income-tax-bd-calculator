@@ -1,7 +1,7 @@
-import isUnvalidInput from './isUnvalidInput';
+import isInvalidInput from './isInvalidInput';
 
 function multiplyByMonths(value, months) {
-    return isUnvalidInput(months) ? value * 12 : value * months;
+    return isInvalidInput(months) ? value * 12 : value * months;
 }
 
 export default multiplyByMonths;
