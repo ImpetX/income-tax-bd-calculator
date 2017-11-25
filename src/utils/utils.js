@@ -10,6 +10,7 @@ import getSumOfObjectValues from './getSumOfObjectValues';
 import getInputValue from './getInputValue';
 import getMinTax from './getMinTax';
 import getTotalTax from './getTotalTax';
+import subtractTDS from './subtractTDS';
 
 export {
     getLowerValue,
@@ -23,5 +24,6 @@ export {
     getSumOfObjectValues,
     getInputValue,
     getMinTax,
-    getTotalTax
+    getTotalTax,
+    subtractTDS
 };

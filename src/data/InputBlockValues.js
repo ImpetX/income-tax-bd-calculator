@@ -1,4 +1,4 @@
-const inputBlockValues = [
+const InputBlockValues = [
     {
         label: 'মূল বেতন (মাসিক) / Basic Salary (Monthly)',
         id: 'BasicSalary'
@@ -22,7 +22,11 @@ const inputBlockValues = [
     {
         label: 'মোট বিনিয়োগ (বাৎসরিক) / Total Investement (Yearly)',
         id: 'TotalInvestment'
+    },
+    {
+        label: 'উৎস কর (মাসিক) / Tax Deducted at Source or TDS (Monthly)',
+        id: 'TDS'
     }
 ];
 
-export default inputBlockValues;
+export default InputBlockValues;

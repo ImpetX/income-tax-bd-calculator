@@ -3,7 +3,7 @@ import {get} from 'object-path';
 
 import Taxes from '../config/Tax';
 import Months from '../data/Months';
-import inputBlockValues from '../data/TaxCalculator';
+import InputBlockValues from '../data/InputBlockValues';
 import {CityCorporationCheckData,
     CityCorporations} from '../data/LocationSelect';
 import {
@@ -18,7 +18,8 @@ import {
     getSumOfObjectValues,
     getInputValue,
     getMinTax,
-    getTotalTax} from '../utils/utils';
+    getTotalTax,
+    subtractTDS} from '../utils/utils';
 import InputBlock from '../components/lib/InputBlock';
 import SelectBlock from '../components/lib/SelectBlock';
 import Button from '../components/lib/Button';
@@ -86,7 +87,8 @@ class TaxCalculator extends Component {
             medicalAllowance: getInputValue('MedicalAllowance'),
             conveyanceAllowance: getInputValue('ConveyanceAllowance'),
             totalBonus: getInputValue('TotalBonus'),
-            totalInvestment: getInputValue('TotalInvestment')
+            totalInvestment: getInputValue('TotalInvestment'),
+            tds: getInputValue('TDS')
         };
 
         let taxable = {
@@ -122,7 +124,11 @@ class TaxCalculator extends Component {
             get(Taxes, 'Investment.TaxRate'));
         let params = this.getTaxAreaParams(this.state.enableLocationSelection, this.state.location);
         let minTax = getMinTax(params.hasArea, params.location);
-        let totalTax = getTotalTax((taxLiability - taxRebate), minTax);
+        let totalTaxWithoutTDS = getTotalTax((taxLiability - taxRebate), minTax);
+        let totalTax = subtractTDS(
+            inputValues.tds,
+            totalTaxWithoutTDS,
+            this.state.numberOfMonths);
 
         this.setState({
             totalTax,
@@ -146,7 +152,7 @@ class TaxCalculator extends Component {
                             onChange={this.handleMonthsChange}
                             options={Months}/>
 
-                        {inputBlockValues.map(el => (
+                        {InputBlockValues.map(el => (
                             <InputBlock
                                 key={el.id}
                                 label={el.label}
