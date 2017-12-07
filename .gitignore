@@ -122,7 +122,7 @@ node_modules
 bower_components
 
 .brackets.json
-public
+#public
 typings
 npm-debug.log.*
 
