@@ -1,0 +1,10 @@
+# How to run
+
+* Run `npm install`
+* To start the development server run `npm start`
+* Open `localhost:8080` in the browser
+
+For development build run `npm run dev`\
+For production build run `npm run prod`
+
+Please send PR against the `dev` branch.
