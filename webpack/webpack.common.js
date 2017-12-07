@@ -13,6 +13,7 @@ var pathsToClean = [
 
 // the clean options to use
 var cleanOptions = {
+    root: path.resolve(__dirname, '../'),
     verbose: true
 }
 
