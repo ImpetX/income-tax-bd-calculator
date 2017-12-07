@@ -3,8 +3,6 @@
 var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
 var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 var merge = require('webpack-merge');
 var common = require('./webpack.common.js');
@@ -60,7 +58,14 @@ var config = merge(common, {
     },
 
     plugins: [
-        new UglifyJsPlugin()
+        new webpack.DefinePlugin({
+            'process.env': {
+                'NODE_ENV': JSON.stringify('production')
+            }
+        }),
+
+        new UglifyJsPlugin(),
+        new webpack.optimize.ModuleConcatenationPlugin()
     ]
 });
 
