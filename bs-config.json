@@ -1,0 +1,8 @@
+{
+    "port": 7000,
+    "server": {
+        "baseDir": "./coverage/Icov-report",
+        "directory": true,
+        "index": "index.html"
+    }
+}
