@@ -1,3 +1,8 @@
+/*
+    multiplyByMonths(5,'abcd') => 60
+    multiplyByMonths(5,8) => 40
+*/
+
 import isInvalidInput from './isInvalidInput';
 
 function multiplyByMonths(value, months) {
