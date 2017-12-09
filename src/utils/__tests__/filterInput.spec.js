@@ -12,4 +12,8 @@ describe('filterInput', () => {
     it('Should output "" when input is ""', () => {
         expect(filterInput('')).toBe('');
     });
+
+    it('Should output "25000" when input is "25000"', () => {
+        expect(filterInput('25000')).toBe('25000');
+    });
 });
