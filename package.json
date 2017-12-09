@@ -4,7 +4,8 @@
   "description": "An income tax calculator in accordance with Bangladesh Income Tax Ordinance",
   "main": "src/index.jsx",
   "scripts": {
-    "test": "jest --colors --verbose --watch",
+    "test": "jest --colors --verbose",
+    "test:watch": "jest --colors --verbose --watch",
     "test:coverage": "jest --coverage && lite-server",
     "start": "webpack-dev-server --config webpack/webpack.dev.js --color --progress",
     "dev": "webpack --config webpack/webpack.dev.js --profile --progress -w",
