@@ -7,4 +7,7 @@
 For development build run `npm run dev`\
 For production build run `npm run prod`
 
+To run the test suites `npm test`\
+To view the test coverage `npm run test:coverage`
+
 Please send PR against the `dev` branch.
