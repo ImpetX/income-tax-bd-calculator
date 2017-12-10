@@ -1,9 +1,18 @@
 const TestData = {
     salary: {
         basic: 50000,
-        houseRent: 25000,
-        medicalAllowance: 5000,
-        conveyanceAllowance: 20000
+        houseRent: {
+            standard: 25000,
+            custom: 30000
+        },
+        medicalAllowance: {
+            standard: 5000,
+            custom: 10000
+        },
+        conveyanceAllowance: {
+            standard: 20000,
+            custom: 10000
+        }
     },
 
     bonus: 100000,
