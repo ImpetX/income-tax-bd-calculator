@@ -69,7 +69,41 @@ const TestData = {
                 }
             ]
         },
-        medicalAllowance: 0,
+        medicalAllowance: {
+            standard: [
+                {
+                    months: 12,
+                    amount: 0
+                },
+
+                {
+                    months: 6,
+                    amount: 0
+                },
+
+                {
+                    months: 3,
+                    amount: 0
+                }
+            ],
+
+            custom: [
+                {
+                    months: 12,
+                    amount: 60000
+                },
+
+                {
+                    months: 6,
+                    amount: 0
+                },
+
+                {
+                    months: 3,
+                    amount: 0
+                }
+            ]
+        },
         conveyanceAllowance: 210000,
         bonus: 100000,
         total: 910000

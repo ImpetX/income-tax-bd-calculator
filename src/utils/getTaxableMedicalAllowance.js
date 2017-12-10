@@ -1,10 +1,10 @@
 import getLowerValue from './getLowerValue';
 import multiplyByMonths from './multiplyByMonths';
 
-function getTaxableMedicalAllowance(medicalAllowance, thresholdMedicalAllowance, basicSalary, months) {
+function getTaxableMedicalAllowance(medicalAllowance, thresholdMedicalAllowance, basicSalary, percentage, months) {
     let gross = {
         medicalAllowance: multiplyByMonths(medicalAllowance, months),
-        tenthOfBasicSalary: multiplyByMonths((basicSalary * 0.1), months)
+        tenthOfBasicSalary: (basicSalary * percentage) * 12
     };
 
     let deductibleAmount = getLowerValue(thresholdMedicalAllowance, gross.tenthOfBasicSalary);
