@@ -1,4 +1,4 @@
-const Test = {
+const TestData = {
     salary: {
         basic: 50000,
         houseRent: 25000,
@@ -29,4 +29,4 @@ const Test = {
     netTax: 46000
 };
 
-export default Test;
+export default TestData;
