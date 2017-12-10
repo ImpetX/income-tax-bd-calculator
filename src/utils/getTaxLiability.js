@@ -13,18 +13,19 @@ function getTaxLiability(taxableIncome) {
         }
 
         else {
-            if (taxableIncome <= get(Taxes, 'TaxFreeThreshold.Group_2.Income')) {
-                taxLiability+= taxableIncome * get(Taxes, 'TaxFreeThreshold.Group_2.TaxRate');
-                taxableIncome = taxableIncome - get(Taxes, 'TaxFreeThreshold.Group_2.Income');
+            let restAmount = taxableIncome > get(Taxes, 'TaxFreeThreshold.Group_2.Income') ? taxableIncome - get(Taxes, 'TaxFreeThreshold.Group_2.Income') : 0;
 
-                if(taxableIncome <= 0) {
-                    return taxLiability;
-                }
+            taxableIncome = restAmount === 0 ? taxableIncome : get(Taxes, 'TaxFreeThreshold.Group_2.Income');
+            taxLiability+= taxableIncome * get(Taxes, 'TaxFreeThreshold.Group_2.TaxRate');
+            taxableIncome = restAmount;
 
-                else {
-                    taxLiability+= taxableIncome * get(Taxes, 'TaxFreeThreshold.Rest.TaxRate');
-                    return taxLiability;
-                }
+            if(taxableIncome <= 0) {
+                return taxLiability;
+            }
+
+            else {
+                taxLiability+= taxableIncome * get(Taxes, 'TaxFreeThreshold.Rest.TaxRate');
+                return taxLiability;
             }
         }
     }

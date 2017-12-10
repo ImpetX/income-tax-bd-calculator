@@ -104,12 +104,46 @@ const TestData = {
                 }
             ]
         },
-        conveyanceAllowance: 210000,
+        conveyanceAllowance: {
+            standard: [
+                {
+                    months: 12,
+                    amount: 210000
+                },
+
+                {
+                    months: 6,
+                    amount: 90000
+                },
+
+                {
+                    months: 3,
+                    amount: 30000
+                }
+            ],
+
+            custom: [
+                {
+                    months: 12,
+                    amount: 90000
+                },
+
+                {
+                    months: 6,
+                    amount: 30000
+                },
+
+                {
+                    months: 3,
+                    amount: 0
+                }
+            ]
+        },
         bonus: 100000,
         total: 910000
     },
 
-    taxaLiability: 79000,
+    taxLiability: 79000,
 
     investment: {
         allowance: 227500,
