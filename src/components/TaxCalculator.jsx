@@ -105,6 +105,7 @@ class TaxCalculator extends Component {
                 inputValues.medicalAllowance,
                 get(Taxes, 'MedicalAllowance.Threshold'),
                 inputValues.basicSalary,
+                get(Taxes, 'MedicalAllowance.Percentage'),
                 this.state.numberOfMonths),
 
             conveyanceAllowance: getTaxableConveyanceAllowance(
