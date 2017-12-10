@@ -143,7 +143,7 @@ const TestData = {
         total: 910000
     },
 
-    taxaLiability: 79000,
+    taxLiability: 79000,
 
     investment: {
         allowance: 227500,
