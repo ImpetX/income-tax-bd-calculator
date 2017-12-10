@@ -104,7 +104,10 @@ const TestData = {
                 }
             ]
         },
-        conveyanceAllowance: 210000,
+        conveyanceAllowance: {
+            standard: 210000,
+            custom: 90000
+        },
         bonus: 100000,
         total: 910000
     },
