@@ -1,7 +1,7 @@
 import getLowerValue from './getLowerValue';
 import multiplyByMonths from './multiplyByMonths';
 
-function getTaxableHouseRent(houseRent, thresholdHouseRent, basicSalary, months) {
+function getTaxableHouseRent(houseRent, thresholdHouseRent, basicSalary, percentage, months) {
     let gross = {
         houseRent: multiplyByMonths(houseRent, months),
         thresholdHouseRent: multiplyByMonths(thresholdHouseRent, months),
