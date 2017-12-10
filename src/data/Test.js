@@ -105,8 +105,39 @@ const TestData = {
             ]
         },
         conveyanceAllowance: {
-            standard: 210000,
-            custom: 90000
+            standard: [
+                {
+                    months: 12,
+                    amount: 210000
+                },
+
+                {
+                    months: 6,
+                    amount: 90000
+                },
+
+                {
+                    months: 3,
+                    amount: 30000
+                }
+            ],
+
+            custom: [
+                {
+                    months: 12,
+                    amount: 90000
+                },
+
+                {
+                    months: 6,
+                    amount: 30000
+                },
+
+                {
+                    months: 3,
+                    amount: 0
+                }
+            ]
         },
         bonus: 100000,
         total: 910000
