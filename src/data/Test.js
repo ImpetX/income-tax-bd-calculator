@@ -34,7 +34,41 @@ const TestData = {
                 amount: 150000
             }
         ],
-        houseRent: 0,
+        houseRent:  {
+            standard: [
+                {
+                    months: 12,
+                    amount: 0
+                },
+
+                {
+                    months: 6,
+                    amount: 0
+                },
+
+                {
+                    months: 3,
+                    amount: 0
+                }
+            ],
+
+            custom: [
+                {
+                    months: 12,
+                    amount: 60000
+                },
+
+                {
+                    months: 6,
+                    amount: 0
+                },
+
+                {
+                    months: 3,
+                    amount: 0
+                }
+            ]
+        },
         medicalAllowance: 0,
         conveyanceAllowance: 210000,
         bonus: 100000,
