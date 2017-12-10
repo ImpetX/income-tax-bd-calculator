@@ -9,7 +9,22 @@ const TestData = {
     bonus: 100000,
 
     taxable: {
-        basic: 600000,
+        basic: [
+            {
+                months: 12,
+                amount: 600000
+            },
+
+            {
+                months: 6,
+                amount: 300000
+            },
+
+            {
+                months: 3,
+                amount: 150000
+            }
+        ],
         houseRent: 0,
         medicalAllowance: 0,
         conveyanceAllowance: 210000,
