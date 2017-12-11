@@ -147,10 +147,44 @@ const TestData = {
 
     investment: {
         allowance: 227500,
-        made: 220000
+        made: {
+            standard: 220000,
+            custom: 250000
+        }
     },
 
-    taxRebate: 33000,
+    taxRebate: {
+        standard: 33000,
+        custom: 34125
+    },
+
+    taxBeforeMinTax: {
+        standard: 46000,
+        custom: 2000
+    },
+
+    minTax: [
+        {
+            isInCityCorporation: true,
+            location: 'Dhaka',
+            tax: 5000
+        },
+
+        {
+            isInCityCorporation: true,
+            location: 'Chittagong',
+            tax: 5000
+        },
+        {
+            isInCityCorporation: true,
+            location: 'Others',
+            tax: 4000
+        },
+        {
+            isInCityCorporation: false,
+            tax: 3000
+        },
+    ],
 
     netTax: 46000
 };
