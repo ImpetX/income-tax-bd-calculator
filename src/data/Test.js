@@ -158,6 +158,11 @@ const TestData = {
         custom: 34125
     },
 
+    taxBeforeMinTax: {
+        standard: 46000,
+        custom: 2000
+    },
+
     minTax: [
         {
             isInCityCorporation: true,
