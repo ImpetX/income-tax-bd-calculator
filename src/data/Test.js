@@ -147,10 +147,16 @@ const TestData = {
 
     investment: {
         allowance: 227500,
-        made: 220000
+        made: {
+            standard: 220000,
+            custom: 250000
+        }
     },
 
-    taxRebate: 33000,
+    taxRebate: {
+        standard: 33000,
+        custom: 34125
+    },
 
     netTax: 46000
 };
