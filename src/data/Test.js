@@ -158,6 +158,29 @@ const TestData = {
         custom: 34125
     },
 
+    minTax: [
+        {
+            isInCityCorporation: true,
+            location: 'Dhaka',
+            tax: 5000
+        },
+
+        {
+            isInCityCorporation: true,
+            location: 'Chittagong',
+            tax: 5000
+        },
+        {
+            isInCityCorporation: true,
+            location: 'Others',
+            tax: 4000
+        },
+        {
+            isInCityCorporation: false,
+            tax: 3000
+        },
+    ],
+
     netTax: 46000
 };
 
