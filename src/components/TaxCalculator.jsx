@@ -55,15 +55,9 @@ class TaxCalculator extends Component {
     handleCityCorporationCheckChange(e) {
         e.preventDefault();
 
-        if(e.target.value === 'yes') {
-            this.setState({
-                enableLocationSelection: true
-            });
-        } else {
-            this.setState({
-                enableLocationSelection: false
-            });
-        }
+        this.setState({
+            enableLocationSelection: e.target.value === 'yes' ? true : false
+        });
     }
 
     handleLocationChange(e) {
